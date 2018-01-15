@@ -7,14 +7,17 @@ title: "Blog - Joey Butler"
 description: > # this means to ignore newlines until "email:"
    A Jekyll theme - Medium inspired
 
+exclude:
+  - vendor
+
 email: a-mail@mail.mail
 #blog logo
 #logo: "/assets/images/df_logo.jpg"
 # blog cover
 cover: "/assets/images/cA4aKEIPQrerBnp1yGHv_IMG_9534-3-2.jpg"
 
-name: 'Joey Butler'
-author: 'Joey Butler'
+name: 'Joe Butler'
+author: 'Joe Butler'
 #author_image: "/assets/images/author.jpg"
 
 paginate:	5
