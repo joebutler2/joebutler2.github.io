@@ -3,18 +3,18 @@ gems:
   - jekyll-paginate
 
 # Site settings
-title: "Blog - Joey Butler"
+title: "Blog - Joe Butler"
 description: > # this means to ignore newlines until "email:"
-   A Jekyll theme - Medium inspired
+   Everything you want is on the other side of fear
 
 exclude:
   - vendor
 
-email: a-mail@mail.mail
+#email:
 #blog logo
 #logo: "/assets/images/df_logo.jpg"
 # blog cover
-cover: "/assets/images/cA4aKEIPQrerBnp1yGHv_IMG_9534-3-2.jpg"
+#cover: ""
 
 name: 'Joe Butler'
 author: 'Joe Butler'
@@ -22,10 +22,10 @@ author: 'Joe Butler'
 
 paginate:	5
 
-blog_url: "http://joeybutler.tech" # the base hostname & protocol for your site
+blog_url: "https://joebutler2.github.io" # the base hostname & protocol for your site
 baseurl: ""
 #used to display twitter cards
-#twitter_handle: '@joeybutler'
+#twitter_handle: ''
 
 #fill in disqus shortname to use disqus
 #disqus: disqus-shortname
@@ -47,7 +47,7 @@ social:
 #    share_link: "&amp;u="
 
   - icon:	github
-    url:	https://github.com/joeybutler
+    url:	https://github.com/joebutler2
     desc:	Fork me on github
     share_url:
     share_title:
