@@ -6,7 +6,7 @@ gems:
 title: "Blog - Joe Butler"
 description: > # this means to ignore newlines until "email:"
    Everything you want is on the other side of fear
-
+url: "/"
 exclude:
   - vendor
 
