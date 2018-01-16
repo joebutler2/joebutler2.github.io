@@ -16,6 +16,8 @@ exclude:
 # blog cover
 #cover: ""
 
+permalink: /:categories/:title/
+
 name: 'Joe Butler'
 author: 'Joe Butler'
 author_image: "/assets/images/author.jpg"

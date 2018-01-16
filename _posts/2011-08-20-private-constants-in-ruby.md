@@ -1,13 +1,10 @@
 ---
 layout: post
-title:  "What is a Closure?"
-categories: closure ruby computer-science
-tags: featured
+title:  "Private Constants in Ruby"
+categories: article 
+tags: 
 date: 2011-08-20
 ---
-
-Private Constants in Ruby
-------
 
 While implementing a new feature the other week, I came across a piece of code that wasn't adhering to the principle of "information hiding". This rule was violated by one object reaching into a different class to grab a constant. This is a common code smell and leads to tightly coupled code.
 

@@ -1,8 +1,9 @@
 ---
 layout: post
 title:  "What is a Closure?"
-categories: closure ruby computer-science
-tags: featured
+categories: article
+tags: 
+date: 2011-03-19
 ---
 
 You can see closures in different web programming languages such as Ruby, Javascript, ActionScript 3.0 and newer versions of PHP. It is a powerful tool and can be an elegant solution given the right circumstances. With that background in mind, let's give it a specific definition.
@@ -193,7 +194,6 @@ If you have any useful closure examples, or questions please join the discussion
 Further Reading on Closures in Ruby and Javascript
 --------------------------------------------------
 * [Interview with Yukihiro Matsumoto about Ruby Closures](http://www.artima.com/intv/closures.html)
-* [Ruby Closure Examples](http://innig.net/software/Ruby/closures-in-Ruby.rb)
 * [Original Javascript "Module Pattern" Article](http://yuiblog.com/blog/2007/06/12/module-pattern/)
 * [Javascript Closure Use Cases](http://msdn.microsoft.com/en-us/scriptjunkie/ff696765)
 
