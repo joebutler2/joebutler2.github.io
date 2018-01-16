@@ -20,6 +20,7 @@ name: 'Joe Butler'
 author: 'Joe Butler'
 author_image: "/assets/images/author.jpg"
 
+timezone: "America/New_York"
 paginate:	5
 
 blog_url: "https://joebutler2.github.io" # the base hostname & protocol for your site

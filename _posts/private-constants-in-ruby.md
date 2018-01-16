@@ -4,7 +4,6 @@ title:  "What is a Closure?"
 categories: closure ruby computer-science
 tags: featured
 date: 2011-08-20
-image: /assets/article_images/2014-08-29-welcome-to-jekyll/desktop.jpg
 ---
 
 Private Constants in Ruby
