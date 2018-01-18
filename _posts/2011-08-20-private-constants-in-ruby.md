@@ -6,11 +6,9 @@ tags:
 date: 2011-08-20
 ---
 
-While implementing a new feature the other week, I came across a piece of code that wasn't adhering to the principle of "information hiding". This rule was violated by one object reaching into a different class to grab a constant. This is a common code smell and leads to tightly coupled code.
-
-This design flaw occurred when a new feature was requested. It required that piece of data to be accessed elsewhere in the system. The resulting code sacrificed good design for ease of implementation. A better design would hide the constant behind a public method, making the code less brittle. Encountering this design flaw made me wonder if Ruby supported private constants.
-
-The short answer is no, at least not yet in Ruby 1.9.2. There is a [support ticket](http://redmine.ruby-lang.org/issues/3908) issued and it is planned for Ruby 1.9.x. But that doesn't help us solve the problem here and now. One idea that popped into my head was to use a class method rather than a constant, and then call private_class_method to limit access to it. To illustrate this idea we'll use an example of a computer-controlled opponent in a video game.
+The short answer is no, at least not yet in Ruby 1.9.2. The core team is planning to add it to Ruby as a patch version for 1.9; you can see the [support ticket](http://redmine.ruby-lang.org/issues/3908) for details. So, is there a way we can emulate a private constant today?
+ 
+One idea that popped into my head was to use a class method rather than a constant, and then call `private_class_method` to limit access. To illustrate this idea, we’ll use an example of a computer-controlled opponent in a video game.
 
     class CPUOpponent
       def self.base_points
@@ -22,21 +20,23 @@ The short answer is no, at least not yet in Ruby 1.9.2. There is a [support tick
     puts CPUOpponent.base_points
     # => NoMethodError: private method ‘base_points’ called for CPUOpponent:Class
 
-As you can see from the output we are unable to access the base_salary without resorting to meta-programming techniques. Drawing a line in the sand like this can protect objects from becoming tightly coupled. 
+As you can see from the output, we are unable to access the `base_points` method. If you're an experienced rubyist, you might think "well, someone could use meta-programming to access the method". While this is true, most developers will respect the private access modifier.
 
-Of course, this is a simple case so what problems do we start to run into when really putting this technique to use?
+This is a simple case, so what problems do we run into when putting this technique to the test?
 
-Continuing with the video game idea, you might want to have different base points based on the difficulty of the game. Updating the model to use a hash to map the base points to the different difficulty ranges.
+Continuing with the video game motif, let's add different base points based on the difficulty of the game. This will require updating the model to use a hash, it will map the number of points to the difficulty level.
 
     def self.base_points
-      @base_points ||= { :easy => 1000, :medium => 2000, :hard => 3000 }
+      @base_points ||= { easy: 1000, medium: 2000, hard: 3000 }
     end
 
-Notice we store the value in an instance variable by using an or-equals. Also known as a nil guard. Nil guards limit the assignment to happen only once, making it behave more like a constant. This introduces a problem, someone could manipulate the value.
+Notice we store the value by using the `||=` operator. Rubyists' call this idiom a nil guard. They limit the assignment to occur only once if given a "truthy" value, because of this, our `base_points` method behaves more like a constant.
+
+Upon close inspection, this introduces a problem, the return value of `base_points` can be manipulated.
 
     class CPUOpponent
       def self.base_points
-        @base_points ||= { :easy => 1000, :medium => 2000, :hard => 3000 }
+        @base_points ||= { easy: 1000, medium: 2000, hard: 3000 }
       end
       private_class_method :base_points
       
@@ -45,11 +45,11 @@ Notice we store the value in an instance variable by using an or-equals. Also kn
       # => {:medium=>2000, :hard=>3000, :super_hard=>9001, :easy=>1000}
     end
 
-This obviously goes against the immutability behavior that constants have. Fortunately Ruby gives a an easy way to work around this issue, the freeze method.
+This obviously goes against the immutability behavior that constants have. Fortunately Ruby gives a an easy way to work around this issue, the `freeze` method.
 
     class CPUOpponent
       def self.base_points
-        @base_points ||= { :easy => 1000, :medium => 2000, :hard => 3000 }.freeze
+        @base_points ||= { easy: 1000, medium: 2000, hard: 3000 }.freeze
       end
       private_class_method :base_points
     
@@ -58,13 +58,13 @@ This obviously goes against the immutability behavior that constants have. Fortu
       # => TypeError: can't modify frozen hash
     end
 
-Now it is starting to behave more like a constant with the added bonus of being private and having access to other class members. Note that if you run this example in the same file as the previous example it will not throw an error. It seems to be a minute detail with the open class language feature. 
+We are getting closer to having `base_points` acting like a constant. There is the bonus of being private and having access to other class members. Running this example in the same file, as the previous example, will not throw an error. Most likely due to ruby's "open class" feature.
 
-While this makeshift constant is starting to act like the real thing, there is one more problem that you might encounter when using this technique, using it inside of instance methods. To tackle this problem we're going to use a simple meta-programming technique, the send method.
+While this makeshift constant is acting like the real thing, there is one more problem you might encounter when using this technique, using it inside of instance methods. To tackle this problem, we will use a simple meta-programming technique, the `send` method.
 
     class CPUOpponent
       def self.base_points
-        @base_points ||= { :easy => 1000, :medium => 2000, :hard => 3000 }.freeze
+        @base_points ||= { easy: 1000, medium: 2000, hard: 3000 }.freeze
       end
       private_class_method :base_points
     
@@ -78,10 +78,10 @@ While this makeshift constant is starting to act like the real thing, there is o
     puts opponent.calculate_score(400)
     # => 1400
   
-The send method allows us to bypass the `private` rule and access the method. Now I agree that this may seem a little hacky, but considering that our goal with this approach is to mimic a private constant (or a static constant, if you’re comparing it to a statically typed language), I feel that this is justifiable. It achieves the goal of being encapsulated by only providing access to instances of the class.
+The send method allows us to bypass the `private` rule and access the method. Now I agree that this may seem a little hacky, but considering that our goal with this approach is to mimic a private constant, I feel that this is justifiable. It achieves the goal of being encapsulated by only providing access to instances of the class.
 
-Of course, you should always weigh the pros and cons of a technique like this before using it. Given the trade-offs, it does seem to be a worthwhile idea to keep in mind.
+You should always weigh the pros and cons of a technique like this before using it. Given the trade-offs, it seems to be a worthwhile idea to keep in mind.
 
-I'm interested to hear what other people think. Do you think there are too many workarounds, or it seems too hacky? Do you see another way to tackle the problem or have you actually used something similar before?
+I'm interested to hear what other people think. Does this have too many workarounds? Or seem too hacky? Do you see another solution? Have you used something similar before?
 
 Download code examples
