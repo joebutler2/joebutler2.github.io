@@ -4,8 +4,9 @@ gems:
 
 # Site settings
 title: "Blog - Joe Butler"
-description: > # this means to ignore newlines until "email:"
-   Everything you want is on the other side of fear
+description:
+   The important thing is not to stop questioning.
+   Curiosity has its own reason for existing.
 url: "/"
 exclude:
   - vendor
