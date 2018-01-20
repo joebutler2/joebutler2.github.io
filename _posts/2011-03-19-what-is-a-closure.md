@@ -76,25 +76,28 @@ Use cases for closures
 
 We'll review some common scenarios that closures are used for in Ruby as well as Javascript. Starting off with the ubiquitous link_to function from the Rails UrlHelper module.
 
-    <%= link_to search_path do %>
-      <span>Search</span>
-    <% end %>
+{% highlight erb %}
+<%= link_to search_path do %>
+  <span>Search</span>
+<% end %>
     
-    # Outputs:
-    # <a href="/search">
-    #   <span>Search</span>
-    # </a>
+#=> <a href="/search"><span>Search</span></a>
+{% endhighlight %}
     
 Using a closure we are able to create an elegant API that is easy to read. The erb looks almost like the output. Consider the alternative without a closure.
-  
-    <%= link_to search_path, :inner_html => '<span>Search</span>' %>
+
+{% highlight erb %}
+<%= link_to search_path, :inner_html => '<span>Search</span>' %>
+{% endhighlight %}
 
 Okay that isn't too bad, we lost the visual representation of the erb wrapping the inner markup. What about a link that has richer styling, and a more complex path?
 
-    <%= link_to search_path(:key_1 => "value_1", :key_2 => "value_2"),
-          :inner_html => '<span>Search</span>',
-          :class => 'btn',
-          :id => 'search' %>
+{% highlight erb %}
+<%= link_to search_path(:key_1 => "value_1", :key_2 => "value_2"),
+      :inner_html => '<span>Search</span>',
+      :class => 'btn',
+      :id => 'search' %>
+{% endhighlight %}
 
 Even less readable, the inner_html argument is now being lost in the noise. Hopefully this clearly shows the readability benefits of using closures.
 
@@ -200,7 +203,7 @@ Another web programming language that features closures is ActionScript 3. Both 
 
 In conclusion
 -------------
-While at first closures may have sounded like a esoteric computer science concept, meant solely for academia, I hope this article has taught you how to practically implement a closure. They can greatly simplify APIs and make the code easier to read and maintain. This translates into saved time and money for clients, and hopefully makes for happier developers.
+While at first closures may have sounded like a esoteric computer science concept, I hope this article has taught you how to practically implement a closure. They can greatly simplify APIs and make the code easier to read and maintain. This translates into saved time and money for clients, and hopefully makes for happier developers.
 
 Don't forget that these techniques can lead to tightly coupled code. If a closure is exposing an object from another part of the system, changing that object's interface could easily break functionality. And if that closure was passed around and called in different locations you could have a nightmare updating that codebase.
 
