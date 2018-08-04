@@ -43,7 +43,7 @@ layout: default
             </section>
             <div class="post-meta">
               <time datetime="{{ post.date | date_to_long_string }}">{{ post.date | date: "%b %d, %Y"  }}</time>
-  <!--            <span class="post-tags-set">on {{#foreach tags}}<span class="post-tag-{{slug}}">{{#if @first}}{{else}}, {{/if}}<a href="/tag/{{slug}}">{{name}}</a></span>{{/foreach}}</span>-->
+  <!--            <span class="post-tags-set">on {% for tag in tags %}<span class="post-tag-{{tag.slug}}"><a href="/tag/{{tag.slug}}">{{tag.name}}</a></span>{% endfor %}</span>-->
             </div>
           </div>
         </article>
@@ -65,7 +65,6 @@ layout: default
             </section>
             <div class="post-meta">
               <time datetime="{{ post.date | date_to_long_string }}">{{ post.date | date: "%b %d, %Y"  }}</time>
-<!--            <span class="post-tags-set">on {{#foreach tags}}<span class="post-tag-{{slug}}">{{#if @first}}{{else}}, {{/if}}<a href="/tag/{{slug}}">{{name}}</a></span>{{/foreach}}</span>-->
             </div>
           </div>
         </article>
@@ -87,7 +86,7 @@ layout: default
     </nav>
 
 
-    <!-- {{!! After all the posts, we have the previous/next pagination links }}
+    <!-- !! After all the posts, we have the previous/next pagination links
     {{pagination}} -->
 
 </main>
