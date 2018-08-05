@@ -4,14 +4,10 @@ title: About
 permalink: /about/
 ---
 
-A medium inspired Jekyll blog theme. The basic idea came from the Ghost theme 
-[Readium 2.0](http://www.svenread.com/readium-ghost-theme/). I use mediator on my own blog [The Base](blog.base68.com).
+Hey, I'm Joe, a Staff Software Engineer at Pivotal. We help companies learn how to build software using modern methodologies and tools. 
 
-You can **download** the theme here:
-[https://github.com/dirkfabisch/mediator](https://github.com/dirkfabisch/mediator) 
+Previously I worked with LivingSocial and saw it grow from an engineering team of ~30 to over 100, from a single monolithic codebase to a Service Oriented Architecture (and yeah, there were couple micro-services in there).
 
-You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+In my current role I've had the honor of leading several projects; each team was able to build a product that delivered business value and delighted users.
 
-You can find the source code for the Jekyll new theme at: [github.com/jglovier/jekyll-new](https://github.com/jglovier/jekyll-new)
-
-You can find the source code for Jekyll at [github.com/jekyll/jekyll](https://github.com/jekyll/jekyll)
+The most fulfilling part of my career has been mentoring others. The main impetus for this blog is to share ideas and reflections with others.

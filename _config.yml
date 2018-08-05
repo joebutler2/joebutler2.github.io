@@ -8,6 +8,8 @@ title: "Blog - Joe Butler"
 description:
    The important thing is not to stop questioning.
    Curiosity has its own reason for existing.
+   <br>
+   <i>Albert Einstein</i>
 url: "/"
 exclude:
   - vendor
