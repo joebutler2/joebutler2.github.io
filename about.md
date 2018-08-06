@@ -10,4 +10,4 @@ Previously I worked with LivingSocial and saw it grow from an engineering team o
 
 In my current role I've had the honor of leading several projects; each team was able to build a product that delivered business value and delighted users.
 
-The most fulfilling part of my career has been mentoring others. The main impetus for this blog is to share ideas and reflections with others.
+The most fulfilling part of my career has been mentoring. The main impetus for this blog is to share ideas and reflections with others.
