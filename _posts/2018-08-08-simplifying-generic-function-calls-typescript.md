@@ -39,7 +39,7 @@ identity(123)
 
 Now we don't have to specify the type and get to avoid typing and reading the arrow symbols.
 
-## Closing thoughts
+### Closing thoughts
 
 This is a little optimization that improve the code clarity. While it's not worth
 refactoring your whole codebase in one fell swoop, this is the perfect thing to
