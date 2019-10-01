@@ -5,9 +5,8 @@ admin_path: ''
 webhook_url: 
 sections:
 - type: document
-  path: _data/social.json
+  path: _data/social.yml
   label: Social Links
-  match: "**/*"
 - type: jekyll-pages
   label: Pages
   create: all
