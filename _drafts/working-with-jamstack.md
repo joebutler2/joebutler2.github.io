@@ -3,7 +3,7 @@ layout: ''
 title: Working with JAMStack
 categories: article
 tags: javascript
-date: 
+date: 2020-04-08 00:00:00 -0400
 
 ---
 Working with JAMStack
