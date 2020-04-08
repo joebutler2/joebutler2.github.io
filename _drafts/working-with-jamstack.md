@@ -1,5 +1,5 @@
 ---
-layout: ''
+layout: 'post'
 title: Working with JAMStack
 categories: article
 tags: javascript
