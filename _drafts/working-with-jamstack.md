@@ -1,8 +1,8 @@
 ---
 layout: ''
 title: Working with JAMStack
-categories: javascript
-tags: ''
+categories: article
+tags: javascript
 date: 
 
 ---
