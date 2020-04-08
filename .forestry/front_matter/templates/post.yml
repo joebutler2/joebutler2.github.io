@@ -18,4 +18,5 @@ fields:
   name: date
   label: date
 pages:
+- _posts/top-programming-books-of-my-career.md
 - _posts/working-with-jamstack.md
