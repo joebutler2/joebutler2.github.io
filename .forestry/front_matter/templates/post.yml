@@ -17,3 +17,5 @@ fields:
 - type: datetime
   name: date
   label: date
+pages:
+- _posts/working-with-jamstack.md
